@@ -15,5 +15,5 @@ export interface JSONSchemaFormatOptions {
    * Whether to add all properties to 'definitions' and in 'properties' only use $ref.
    * @default true
    */
-  useRef: boolean;
+  useRef?: boolean;
 }
