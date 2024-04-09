@@ -54,20 +54,15 @@ setTimeout(async () => {
   const parser = new Parser("mysql");
 
   /**
-   * Read on for available options.
-   */
-  const options = {};
-
-  /**
    * Get the JSON Schema if you need to modify it...
    */
-  const jsonSchemaDocuments = parser.feed(sql).toJsonSchemaArray(options);
+  const jsonSchemaDocuments = parser.feed(sql).toJsonSchemaArray({useRef: false});
 
   /**
    * Or explore the compact JSON format...
    */
   const compactJsonTablesArray = parser.feed(sql).toCompactJson(parser.results);
 
-  await fsp.writeFile('tron-ddl.json', JSON.stringify(compactJsonTablesArray, null, 2))
+  await fsp.writeFile('tron-ddl.json', JSON.stringify(jsonSchemaDocuments, null, 2))
 
 }, 0);
